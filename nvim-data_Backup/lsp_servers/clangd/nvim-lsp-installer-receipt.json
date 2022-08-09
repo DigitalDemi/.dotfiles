@@ -1,0 +1,1 @@
+{"schema_version":"1.0a","primary_source":{"release":"14.0.3","file":"https:\/\/github.com\/clangd\/clangd\/releases\/download\/14.0.3\/clangd-windows-14.0.3.zip","type":"github_release_file","repo":"clangd\/clangd"},"secondary_sources":[],"metrics":{"start_time":1659624628524,"completion_time":1659624636732},"name":"clangd"}
