@@ -79,16 +79,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["auto-save.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\auto-save.nvim",
-    url = "https://github.com/Pocco81/auto-save.nvim"
-  },
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-buffer",
@@ -114,40 +104,25 @@ _G.packer_plugins = {
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  ["gitsigns.nvim"] = {
+  harpoon = {
     loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
-    url = "https://github.com/lewis6991/gitsigns.nvim"
-  },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
-  },
-  ["impatient.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\impatient.nvim",
-    url = "https://github.com/lewis6991/impatient.nvim"
-  },
-  ["live-server"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\live-server",
-    url = "https://github.com/manzeloth/live-server"
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
+    url = "https://github.com/theprimeagen/harpoon"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
-    url = "https://github.com/hoob3rt/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -159,15 +134,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["neo-tree.nvim"] = {
+  melange = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme melange\bcmd\bvim\0" },
     loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neo-tree.nvim",
-    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\melange",
+    url = "https://github.com/savq/melange"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -179,89 +150,63 @@ _G.packer_plugins = {
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-comment"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-comment",
-    url = "https://github.com/terrortylor/nvim-comment"
-  },
-  ["nvim-dap"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-dap",
-    url = "https://github.com/mfussenegger/nvim-dap"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-transparent"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-transparent",
-    url = "https://github.com/xiyaowong/nvim-transparent"
   },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-ts-autotag"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-ts-autotag",
-    url = "https://github.com/windwp/nvim-ts-autotag"
-  },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  playground = {
+    loaded = true,
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\playground",
+    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["presence.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\presence.nvim",
-    url = "https://github.com/andweeb/presence.nvim"
-  },
   ["rust-tools.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
-  ["scope.nvim"] = {
+  ["telescope.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\scope.nvim",
-    url = "https://github.com/tiagovla/scope.nvim"
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["toggle-lsp-diagnostics.nvim"] = {
+  undotree = {
     loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\toggle-lsp-diagnostics.nvim",
-    url = "https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\undotree",
+    url = "https://github.com/mbbill/undotree"
   },
-  ["toggleterm.nvim"] = {
-    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0" },
+  ["vim-fugitive"] = {
     loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\toggleterm.nvim",
-    url = "https://github.com/akinsho/toggleterm.nvim"
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
-  ["vim-vsnip"] = {
+  ["vim-hardmode"] = {
     loaded = true,
-    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-vsnip",
-    url = "https://github.com/hrsh7th/vim-vsnip"
+    path = "C:\\Users\\Demii\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-hardmode",
+    url = "https://github.com/dusans/vim-hardmode"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
+-- Config for: melange
+time([[Config for melange]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme melange\bcmd\bvim\0", "config", "melange")
+time([[Config for melange]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
