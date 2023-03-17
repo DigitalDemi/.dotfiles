@@ -21,12 +21,16 @@ return require('packer').startup(function(use)
     end
 })
 
-
+  -- Syntax Hightlighting
   use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
   use('nvim-treesitter/playground')
+  --  File hopping
   use('theprimeagen/harpoon')
+  -- undo tree
   use('mbbill/undotree')
+  -- Git in vim
   use('tpope/vim-fugitive')
+  --  Full Lsp support
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  requires = {
@@ -48,14 +52,48 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
-
+  -- Better vim movement
   use ('dusans/vim-hardmode')
 
+  -- Github copilot
   use ('github/copilot.vim')   
 
+  --  AutoPairs 
   use ('windwp/nvim-autopairs')
-
+  -- Rust lsp
   use ('simrat39/rust-tools.nvim')
+  --  Lua Line
+  use {'nvim-lualine/lualine.nvim'}
+  -- lsp saga
+  use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+      config = function()
+          require("lspsaga").setup({})
+      end,
+      requires = {
+          {"nvim-tree/nvim-web-devicons"},
+          --Please make sure you install markdown and markdown_inline parser
+          {"nvim-treesitter/nvim-treesitter"}
+      }
+  })
+  use "lukas-reineke/indent-blankline.nvim"
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
+  use 'ryanoasis/vim-devicons'
+
+  use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+}
 
 end)
 
