@@ -28,7 +28,3 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
-
-
-
-

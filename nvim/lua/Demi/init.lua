@@ -1,3 +1,4 @@
-require("Demi.set")
 require("Demi.remap")
-require("Demi.packer")
+require("Demi.plugin")
+require("Demi.theme")
+
