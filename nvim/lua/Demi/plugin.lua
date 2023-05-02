@@ -19,7 +19,21 @@ local plugins = {
   tag = '0.1.1',
   -- or                              , branch = '0.1.1',
   { 'nvim-lua/plenary.nvim' },
-  { 'nvim-treesitter/nvim-treesitter', cmd = "TSUpdate" },
+  {
+        'nvim-treesitter/nvim-treesitter',
+        build = function()
+            require('nvim-treesitter.install').update { sync = true }
+        end,
+        dependencies = {
+            { 'nvim-treesitter/nvim-treesitter-textobjects' },
+            { 'HiPhish/nvim-ts-rainbow2' },
+            { 'mfussenegger/nvim-treehopper' },
+            { 'mizlan/iswap.nvim' },
+            { 'romgrk/nvim-treesitter-context' },
+            { 'JoosepAlviste/nvim-ts-context-commentstring' },
+            { 'cshuaimin/ssr.nvim' },
+        },
+    },
   "rebelot/kanagawa.nvim",
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v2.x',
@@ -37,8 +51,19 @@ local plugins = {
   { 'hrsh7th/nvim-cmp' },       -- Required
   { 'hrsh7th/cmp-nvim-lsp' },   -- Required
   { 'L3MON4D3/LuaSnip' },       -- Required
+  {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+  { "lukas-reineke/indent-blankline.nvim" },
+  {
+    'ThePrimeagen/harpoon',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  }
+}
 }
 
 require("lazy").setup(plugins, opts)
+
+require 'nvim-treesitter.install'.compilers = { "clang" }
 
 require('mason').setup()
