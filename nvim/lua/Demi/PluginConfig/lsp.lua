@@ -1,10 +1,12 @@
 local lsp = require("lsp-zero")
+local lspconfig = require('lspconfig')
 
 lsp.preset("recommended")
 
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
+  'astro@1.0.8',
 })
 
 -- Fix Undefined global 'vim'
@@ -53,6 +55,33 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+lspconfig.astro.setup({
+  cmd = {"astro-ls", "--stdio"},
+  filetypes = {"astro"},
+  init_options = {
+    typescript = {} 
+  },
+  root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
+})
+
+
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+require('luasnip.loaders.from_vscode').lazy_load()
+
+cmp.setup({
+  sources = {
+    {name = 'path'},
+    {name = 'nvim_lsp'},
+    {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip', keyword_length = 2},
+  },
+  mapping = {
+    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+  }
+})
 
 vim.diagnostic.config({
     virtual_text = true

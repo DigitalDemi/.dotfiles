@@ -34,7 +34,7 @@ local plugins = {
             { 'cshuaimin/ssr.nvim' },
         },
     },
-  "rebelot/kanagawa.nvim",
+  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v2.x',
   -- LSP Support
@@ -51,6 +51,9 @@ local plugins = {
   { 'hrsh7th/nvim-cmp' },       -- Required
   { 'hrsh7th/cmp-nvim-lsp' },   -- Required
   { 'L3MON4D3/LuaSnip' },       -- Required
+  { 'hrsh7th/cmp-buffer'},
+  { 'saadparwaiz1/cmp_luasnip'},
+  { 'rafamadriz/friendly-snippets'},
   {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
@@ -59,7 +62,17 @@ local plugins = {
     'ThePrimeagen/harpoon',
     dependencies = { 'nvim-lua/plenary.nvim' },
   }
-}
+  
+},
+{'ThePrimeagen/vim-be-good'},
+{'numToStr/Comment.nvim',
+  config = function()
+      require('Comment').setup()
+  end
+},
+{'tribela/vim-transparent'},
+{'andweeb/presence.nvim'}
+  
 }
 
 require("lazy").setup(plugins, opts)
