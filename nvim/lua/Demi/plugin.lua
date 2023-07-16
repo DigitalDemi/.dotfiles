@@ -71,7 +71,9 @@ local plugins = {
   end
 },
 {'tribela/vim-transparent'},
-{'andweeb/presence.nvim'}
+{'andweeb/presence.nvim'},
+{'tpope/vim-fugitive'},
+{'lewis6991/gitsigns.nvim'},
   
 }
 
