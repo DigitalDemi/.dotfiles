@@ -1,0 +1,7 @@
+[user]
+	email = 100835583+DemiAina@users.noreply.github.com
+	signingkey = A92560A8AFE02CB7
+	name = DemiAina
+[commit]
+	gpgsign = true
+[gpg]
