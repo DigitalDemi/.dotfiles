@@ -34,8 +34,10 @@ local plugins = {
             { 'cshuaimin/ssr.nvim' },
         },
     },
-  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
-  'VonHeikemen/lsp-zero.nvim',
+    {'daschw/leaf.nvim'},
+    {'tribela/vim-transparent'},
+    {'rktjmp/lush.nvim'},
+    'VonHeikemen/lsp-zero.nvim',
   branch = 'v2.x',
   -- LSP Support
   { 'neovim/nvim-lspconfig' },   -- Required
@@ -74,7 +76,9 @@ local plugins = {
 {'andweeb/presence.nvim'},
 {'tpope/vim-fugitive'},
 {'lewis6991/gitsigns.nvim'},
-  
+{'norcalli/nvim-colorizer.lua'},
+-- Debug
+{'mfussenegger/nvim-dap'}
 }
 
 require("lazy").setup(plugins, opts)
