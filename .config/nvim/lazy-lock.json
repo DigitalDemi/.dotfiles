@@ -9,11 +9,19 @@
   "harpoon": { "branch": "master", "commit": "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc" },
   "indent-blankline.nvim": { "branch": "master", "commit": "4541d690816cb99a7fc248f1486aa87f3abce91c" },
   "iswap.nvim": { "branch": "master", "commit": "8213a12857de8d757311b7edc0bf1578e9a58b27" },
+<<<<<<< Updated upstream
   "lazy.nvim": { "branch": "main", "commit": "dac844ed617dda4f9ec85eb88e9629ad2add5e05" },
   "leaf.nvim": { "branch": "main", "commit": "b26f60078941daca02c155d61d0906ccd45aeb72" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "73bc33fe9ad5a1d4501536fdd4755b3aa18c3392" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "lush.nvim": { "branch": "main", "commit": "1b58de77b457ad22c81bcdd621fa5f943f41dd87" },
+=======
+  "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
+  "leaf.nvim": { "branch": "main", "commit": "b26f60078941daca02c155d61d0906ccd45aeb72" },
+  "lsp-zero.nvim": { "branch": "v2.x", "commit": "73bc33fe9ad5a1d4501536fdd4755b3aa18c3392" },
+  "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
+  "lush.nvim": { "branch": "main", "commit": "a8f0f7b9f837887f13a61d67b40ae26188fe4d62" },
+>>>>>>> Stashed changes
   "mason-lspconfig.nvim": { "branch": "main", "commit": "e86a4c84ff35240639643ffed56ee1c4d55f538e" },
   "mason.nvim": { "branch": "main", "commit": "fe9e34a9ab4d64321cdc3ecab4ea1809239bb73f" },
   "neoconf.nvim": { "branch": "main", "commit": "08f146d53e075055500dca35e93281faff95716b" },

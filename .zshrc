@@ -50,5 +50,5 @@ alias g="git"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan,bg=#ff00ff,bold" 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source ~/scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/scripts/zsh-completions/zsh-completions.plugin.zsh
-source ~/scripts/zsh-autosuggestions/ zsh-autosuggestions.zsh
+source ~/scripts/zsh-completion/zsh-completions.plugin.zsh
+source ~/scripts/zsh-autosuggestion/zsh-autosuggestions.zsh
