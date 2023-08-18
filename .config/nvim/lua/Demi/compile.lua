@@ -24,22 +24,17 @@ function M.Compile()
     return
   end
 
-  -- Check if tmux is installed and if the system is not Windows
-  if not is_tmux_installed() and vim.fn.has('unix') == 1 then
+  -- Check if tmux is installed
+  if not is_tmux_installed() then
     print("Tmux is not installed. Cannot open in tmux panel.")
     return
   end
 
-  -- Open terminal based on the system
-  if vim.fn.has('win32') == 1 then
-    -- For Windows, use regular vertical split with a terminal
-    local terminal_command = 'vsplit term://' .. project_compile_command
-    vim.cmd(terminal_command)
-  else
-    -- For non-Windows, use tmux panel split
-    local tmux_terminal_command = string.format('silent !tmux split-window -h "%s"', project_compile_command)
-    vim.cmd(tmux_terminal_command)
-  end
+  -- Prepare the tmux split-window command
+  local tmux_pane_command = string.format([[tmux split-window -h -c "#{pane_current_path}" 'bash -c "%s; read -p \"Press Enter to exit...\"; tmux send-keys -t '#{pane_id}' Enter; sleep 2; tmux kill-pane -a"']], project_compile_command)
+
+  -- Run the tmux split-window command
+  vim.fn.system(tmux_pane_command)
 end
 
 -- Function to set and save the compilation command to the project-specific file
@@ -55,5 +50,19 @@ function M.SetCompileCommand(command)
   end
 end
 
+vim.api.nvim_set_keymap('n', '<F5>', [[:lua require('Demi.compile').Compile()<CR>]], { noremap = true, silent = true })
+
 return M
+
+
+
+
+
+
+
+
+
+
+
+
 

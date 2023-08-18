@@ -34,7 +34,6 @@ SAVEHIST=5000
 #
 # Dotfiles management, using bare repo
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -47,8 +46,10 @@ export NVM_DIR="$HOME/.config/nvm"
 alias ll="ls -a"
 alias vim="nvim"
 alias g="git"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan,bg=#ff00ff,bold" 
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan,bg=#ff00ff,bold" 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source ~/scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/scripts/zsh-completion/zsh-completions.plugin.zsh
 source ~/scripts/zsh-autosuggestion/zsh-autosuggestions.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/nvm/init-nvm.sh
