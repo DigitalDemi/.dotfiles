@@ -4,12 +4,11 @@ local lspconfig = require('lspconfig')
 lsp.ensure_installed({
     'tsserver',
     'rust_analyzer',
-    'astro@1.0.8',
+    'astro',
 })
 
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
-
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -28,14 +27,14 @@ require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 lsp.setup()
 
 
-lspconfig.astro.setup({
-    cmd = { "astro-ls", "--stdio" },
-    filetypes = { "astro" },
-    init_options = {
-        typescript = {}
-    },
-    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
-})
+-- lspconfig.astro.setup({
+--     cmd = { "astro-ls", "--stdio" },
+--     filetypes = { "astro" },
+--     init_options = {
+--         typescript = {}
+--     },
+--     root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
+-- })
 
 lsp.set_sign_icons({
     error = 'E',
@@ -44,18 +43,14 @@ lsp.set_sign_icons({
     info = 'I'
 })
 
-
-
-
-
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 require('luasnip.loaders.from_vscode').lazy_load()
 
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
+-- local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
 })
@@ -70,15 +65,15 @@ lsp.setup_nvim_cmp({
 
 
 cmp.setup({
-    completion = {
-        keyword_length = 0,
-        autocomplete = false,
-    },
+    -- completion = {
+    --     keyword_length = 0,
+    --     autocomplete = false,
+    -- },
     sources = {
+        { name = 'nvim_lsp' , keyword_length = 4},
         { name = 'path' },
-        { name = 'nvim_lsp' },
-        { name = 'buffer',  keyword_length = 3 },
-        { name = 'luasnip', keyword_length = 2 },
+        { name = 'buffer',  keyword_length = 5 },
+        { name = 'luasnip'},
     },
     mapping = {
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),

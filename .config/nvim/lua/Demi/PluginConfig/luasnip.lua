@@ -1,0 +1,32 @@
+-- local ls = require "luasnip"
+--
+-- local s = ls.s
+--
+-- local fmt = require("luasnip.extras.fmt").fmt
+--
+-- local i = ls.insert_node
+--
+-- local rep = require("luasnip.extras").rep
+-- ls.snippets = {
+--     all = {
+--     },
+--     lua = {
+--     },
+--      cpp = {
+--         s("usaco",
+--             ls.parser.parse_snippet(
+--                 "usaco_comments",
+--                 fmt(
+--                     "/* Use the slash-star style comments or the system won't see your",
+--                     "   identification information */",
+--                     "/*",
+--                     "ID:",
+--                     "TASK: test",
+--                     "LANG: C++",
+--                     "*/",
+--                     "/* LANG can be C++11 or C++14 for those more recent releases */"
+--                 )
+--             )
+--         ),
+--     },
+-- }

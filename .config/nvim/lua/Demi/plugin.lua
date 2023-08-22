@@ -12,12 +12,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    "folke/which-key.nvim",
+    {"folke/which-key.nvim"},
     { "folke/neoconf.nvim",   cmd = "Neoconf" },
-    "folke/neodev.nvim",
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
-    -- or                              , branch = '0.1.1',
+    {"folke/neodev.nvim"},
+    {'nvim-telescope/telescope.nvim'},
     { 'nvim-lua/plenary.nvim' },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -55,7 +53,6 @@ local plugins = {
     { 'L3MON4D3/LuaSnip' },                  -- Required
     { 'hrsh7th/cmp-buffer' },
     { 'saadparwaiz1/cmp_luasnip' },
-    { 'rafamadriz/friendly-snippets' },
     { 'windwp/nvim-ts-autotag' },
     {
         'nvim-lualine/lualine.nvim',
