@@ -53,3 +53,5 @@ source ~/scripts/zsh-completion/zsh-completions.plugin.zsh
 source ~/scripts/zsh-autosuggestion/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/nvm/init-nvm.sh
+
+export GO111MODULE=on

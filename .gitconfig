@@ -1,6 +1,6 @@
 [user]
 	email = 100835583+DemiAina@users.noreply.github.com
-	signingkey = 3F0B468547CD97AD
+	signingkey = 8A90FC2D8C6CA926
 	name = DemiAina
 [commit]
 	gpgsign = true
@@ -8,3 +8,5 @@
 	program = /usr/bin/gpg
 [core]
 	editor = nvim
+[init]
+	defaultBranch = main

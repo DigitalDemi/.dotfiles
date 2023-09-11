@@ -12,10 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    {"folke/which-key.nvim"},
-    { "folke/neoconf.nvim",   cmd = "Neoconf" },
-    {"folke/neodev.nvim"},
-    {'nvim-telescope/telescope.nvim'},
+    { 'nvim-telescope/telescope.nvim' },
     { 'nvim-lua/plenary.nvim' },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -32,9 +29,7 @@ local plugins = {
             { 'cshuaimin/ssr.nvim' },
         },
     },
-    { "catppuccin/nvim",        name = "catppuccin", priority = 1000 },
-    { 'tribela/vim-transparent' },
-    { 'rktjmp/lush.nvim' },
+    { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     -- LSP Support
@@ -71,6 +66,11 @@ local plugins = {
             require('Comment').setup()
         end
     },
+    {
+        "m4xshen/hardtime.nvim",
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+        opts = {}
+    },
     { 'tribela/vim-transparent' },
     { 'andweeb/presence.nvim' },
     { 'tpope/vim-fugitive' },
@@ -78,20 +78,10 @@ local plugins = {
     { 'norcalli/nvim-colorizer.lua' },
     -- Debug
     { 'mfussenegger/nvim-dap' },
-
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
-    }
 }
 
 require("lazy").setup(plugins, opts)
 
-require 'nvim-treesitter.install'.compilers = { "clang" }
-
 require('mason').setup()
+
+require 'nvim-treesitter.install'.compilers = { "clang" }
