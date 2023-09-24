@@ -17,6 +17,7 @@ fi
 # Personal Soruce
 source ~/scripts/zsh-z.plugin.zsh
 source ~/scripts/gpg-agent.plugin.zsh
+source ~/scripts/jdk-switch/jdk-switch.plugin.zsh
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored _approximate
@@ -62,3 +63,5 @@ export GO111MODULE=on
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+bindkey -v
