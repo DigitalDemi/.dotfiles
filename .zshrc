@@ -55,3 +55,10 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/nvm/init-nvm.sh
 
 export GO111MODULE=on
+
+# bun completions
+[ -s "/home/demi/.bun/_bun" ] && source "/home/demi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
