@@ -52,6 +52,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source ~/scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/scripts/zsh-completion/zsh-completions.plugin.zsh
 source ~/scripts/zsh-autosuggestion/zsh-autosuggestions.zsh
+source ~/scripts/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/nvm/init-nvm.sh
 
@@ -65,3 +66,8 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 bindkey -v
+
+export PATH=$PATH:~/scripts/tmux-tools
+
+bindkey -s ^F "tmux-sessionizer\n"
+
