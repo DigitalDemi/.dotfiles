@@ -10,3 +10,6 @@
 [submodule "scripts/jdk-switch"]
 	path = scripts/jdk-switch
 	url = https://github.com/LockonS/jdk-switch.git
+[submodule "scripts/fzf-zsh-plugin"]
+	path = scripts/fzf-zsh-plugin
+	url = git@github.com:unixorn/fzf-zsh-plugin.git
