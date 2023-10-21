@@ -1,13 +1,15 @@
-local lsp = require('lsp-zero').preset({})
-local lspconfig = require('lspconfig')
+local lsp_zero = require('lsp-zero')
 
-lsp.ensure_installed({
-    'tsserver',
-    'rust_analyzer',
-    'astro',
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {'tsserver', 'rust_analyzer'},
+  handlers = {
+      lsp_zero.default_setup,
+      jdtls = lsp_zero.noop, --ignores configuration
+  }
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -21,67 +23,34 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
--- Fix Undefined global 'vim'
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.setup()
-
-
--- lspconfig.astro.setup({
---     cmd = { "astro-ls", "--stdio" },
---     filetypes = { "astro" },
---     init_options = {
---         typescript = {}
---     },
---     root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
--- })
-
-lsp.set_sign_icons({
-    error = 'E',
-    warn = 'W',
-    hint = 'H',
-    info = 'I'
-})
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
-require('luasnip.loaders.from_vscode').lazy_load()
 
--- local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+cmp.setup({
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-})
-
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
+    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    })
 })
 
 
 cmp.setup({
-    -- completion = {
-    --     keyword_length = 0,
-    --     autocomplete = false,
-    -- },
     sources = {
         { name = 'nvim_lsp' , keyword_length = 4},
         { name = 'path' },
         { name = 'buffer',  keyword_length = 5 },
         { name = 'luasnip'},
-    },
-    mapping = {
-        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
     }
-})
-
-
+  })
 
 
 vim.diagnostic.config({
