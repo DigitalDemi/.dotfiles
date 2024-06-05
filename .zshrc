@@ -4,7 +4,7 @@ then
     tmux new-session -c $PWD
 fi
 # neofetch
-neofetch
+fastfetch
 # gpg fix
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -35,6 +35,7 @@ SAVEHIST=5000
 #
 # Dotfiles management, using bare repo
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias ls="ls --color=auto"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -71,3 +72,16 @@ export PATH=$PATH:~/scripts/tmux-tools
 
 bindkey -s ^F "tmux-sessionizer\n"
 
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+export ANDROID_HOME="/home/demi/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+
+
+# pnpm
+export PNPM_HOME="/home/demi/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

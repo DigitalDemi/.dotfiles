@@ -23,34 +23,39 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
+-- Setup the `cmp` completion plugin
 cmp.setup({
+    -- Configuration for the completion and documentation windows
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+    -- Key mappings for various completion actions
     mapping = cmp.mapping.preset.insert({
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    }),
+    -- Snippet expansion configuration
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    -- Source configuration for the completion engine
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp', keyword_length = 4 },
+        { name = 'path' },
+        { name = 'buffer', keyword_length = 5 },
+        { name = 'luasnip' },
     })
 })
-
-
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' , keyword_length = 4},
-        { name = 'path' },
-        { name = 'buffer',  keyword_length = 5 },
-        { name = 'luasnip'},
-    }
-  })
 
 
 vim.diagnostic.config({
