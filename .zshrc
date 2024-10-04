@@ -57,7 +57,9 @@ source ~/scripts/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/nvm/init-nvm.sh
 
-export GO111MODULE=on
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/.local/bin/stack
 
 # bun completions
 [ -s "/home/demi/.bun/_bun" ] && source "/home/demi/.bun/_bun"

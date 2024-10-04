@@ -29,7 +29,7 @@ local plugins = {
             { 'cshuaimin/ssr.nvim' },
         },
     },
-    { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
+    { "scottmckendry/cyberdream.nvim", priority = 1000 },
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     -- LSP Support
@@ -118,6 +118,12 @@ local plugins = {
     { 'norcalli/nvim-colorizer.lua' },
     -- Debug
     { 'mfussenegger/nvim-dap' },
+     {
+        'barrett-ruth/live-server.nvim',
+        build = 'pnpm add -g live-server',
+        cmd = { 'LiveServerStart', 'LiveServerStop' },
+        config = true
+    },
 }
 
 require("lazy").setup(plugins, opts)
