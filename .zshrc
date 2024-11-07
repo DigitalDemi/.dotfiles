@@ -3,6 +3,9 @@ if command -v tmux &> /dev/null && [[ -z "$TMUX" ]]
 then
     tmux new-session -c $PWD
 fi
+
+KEYTIMEOUT=1
+
 # neofetch
 fastfetch
 # gpg fix

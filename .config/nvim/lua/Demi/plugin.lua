@@ -29,105 +29,135 @@ local plugins = {
             { 'cshuaimin/ssr.nvim' },
         },
     },
+
+    {
+        "lukas-reineke/headlines.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true, -- or `opts = {}`
+    },
+
     { "scottmckendry/cyberdream.nvim", priority = 1000 },
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    -- example lazy.nvim install setup
+    -- {
+    --     "slugbyte/lackluster.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     init = function()
+    --         vim.cmd.colorscheme("lackluster")
+    --         -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
+    --         -- vim.cmd.colorscheme("lackluster-mint")
+    --     end,
+    -- },
+
+    {'VonHeikemen/lsp-zero.nvim'},
+    
     -- LSP Support
     { 'neovim/nvim-lspconfig' }, -- Required
     {
-        -- Optional
         'williamboman/mason.nvim',
         build = function()
             pcall(vim.cmd, 'MasonUpdate')
         end,
     },
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },                  -- Required
-    { 'hrsh7th/cmp-nvim-lsp' },              -- Required
-    {
-	"L3MON4D3/LuaSnip",
-	-- follow latest release.
-	version = "v2.3", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-	-- install jsregexp (optional!).
-	build = "make install_jsregexp"
-},
+    { 'hrsh7th/nvim-cmp' }, -- Required
+    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
     { 'hrsh7th/cmp-buffer' },
     { 'saadparwaiz1/cmp_luasnip' },
+
+    -- Snippets
+    {
+        'L3MON4D3/LuaSnip',
+        version = "v2.3", -- Use the latest stable version
+        build = "make install_jsregexp"
+    },
+
+    -- Tagging and Autocompletion
     { 'windwp/nvim-ts-autotag' },
+
+    -- Statusline and UI
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-        { "lukas-reineke/indent-blankline.nvim" },
-        {
-            "ThePrimeagen/harpoon",
-            branch = "harpoon2",
-            dependencies = { "nvim-lua/plenary.nvim" }
-        }   
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
+    { "lukas-reineke/indent-blankline.nvim" },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+
+    -- Tmux Integration
     { 'christoomey/vim-tmux-navigator' },
+
+    -- Game for practice
     { 'ThePrimeagen/vim-be-good' },
+
+    -- Comments
     {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
     },
-    {
-  "epwalsh/obsidian.nvim",
-  version = "*",  -- recommended, use latest release instead of latest commit
-  lazy = true,
-  ft = "markdown",
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  -- event = {
-  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-  --   "BufReadPre path/to/my-vault/**.md",
-  --   "BufNewFile path/to/my-vault/**.md",
-  -- },
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
 
-    -- see below for full list of optional dependencies 👇
-  },
-  opts = {
-    workspaces = {
-      {
-        name = "personal",
-        path = "~/vaults/personal",
-      },
-      {
-        name = "work",
-        path = "~/vaults/work",
-      },
+    -- Obsidian integration for notes
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*", -- Recommended: use latest release
+        lazy = true,
+        ft = "markdown",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            workspaces = {
+                { name = "personal", path = "/home/demi/.Obsidian" },
+                -- { name = "work", path = "~/vaults/work" },
+            },
+        },
     },
 
-    -- see below for full list of options 👇
-  },
-},
+    -- Typing speed control
     {
         "m4xshen/hardtime.nvim",
         dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
         opts = {}
     },
+
+    -- Transparent background
     { 'tribela/vim-transparent' },
+
+    -- Discord Rich Presence
     { 'andweeb/presence.nvim' },
+
+    -- Git Integration
     { 'tpope/vim-fugitive' },
     { 'lewis6991/gitsigns.nvim' },
+
+    -- Colorizer
     { 'norcalli/nvim-colorizer.lua' },
-    -- Debug
+
+    -- Debugging
     { 'mfussenegger/nvim-dap' },
-     {
+
+    -- Live server for web development
+    {
         'barrett-ruth/live-server.nvim',
         build = 'pnpm add -g live-server',
         cmd = { 'LiveServerStart', 'LiveServerStop' },
-        config = true
+        config = true,
     },
 }
 
+local opts = {}
+
+-- Load plugins
 require("lazy").setup(plugins, opts)
 
+-- Mason setup
 require('mason').setup()
 
+-- Set Treesitter compiler
 require 'nvim-treesitter.install'.compilers = { "clang" }
+

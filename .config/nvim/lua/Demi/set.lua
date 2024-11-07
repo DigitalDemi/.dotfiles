@@ -3,10 +3,10 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- tabs/spaces
-
 vim.opt.tabstop = 4
 vim.softabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.colorcolumn = "80"
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
