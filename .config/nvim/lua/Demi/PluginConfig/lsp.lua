@@ -1,3 +1,4 @@
+-- Error handler for -32802
 for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
     local default_diagnostic_handler = vim.lsp.handlers[method]
     vim.lsp.handlers[method] = function(err, result, context, config)
@@ -25,9 +26,26 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
--- LSP capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- Mason setup
+require('mason').setup({})
+
+-- blink.cmp setup
+local blink_cmp = require('blink.cmp')
+blink_cmp.setup({
+    keymap = {
+        preset = 'default'
+    },
+    appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = 'mono'
+    },
+    sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+})
+
+-- Get capabilities from blink.cmp
+local capabilities = blink_cmp.get_lsp_capabilities()
 capabilities.workspace = {
     configuration = true,
     workspaceFolders = true,
@@ -36,12 +54,9 @@ capabilities.workspace = {
     }
 }
 
--- Mason setup
-require('mason').setup({})
-
 -- Define handlers
 local handlers = {
-    -- Default handler (will be called for each installed server that doesn't have a dedicated handler)
+    -- Default handler
     function(server_name)
         require('lspconfig')[server_name].setup({
             capabilities = capabilities,
@@ -62,7 +77,7 @@ local handlers = {
         })
     end,
 
-    -- Lua LSP specific configuration
+    -- Lua LSP
     ["lua_ls"] = function()
         require('lspconfig').lua_ls.setup({
             capabilities = capabilities,
@@ -86,7 +101,7 @@ local handlers = {
         })
     end,
 
-    -- TypeScript specific configuration
+    -- TypeScript
     ["ts_ls"] = function()
         require('lspconfig').ts_ls.setup({
             capabilities = capabilities,
@@ -94,7 +109,7 @@ local handlers = {
         })
     end,
 
-    -- Rust specific configuration with fix for server cancellation
+    -- Rust
     ["rust_analyzer"] = function()
         require('lspconfig').rust_analyzer.setup({
             capabilities = capabilities,
@@ -119,44 +134,6 @@ local handlers = {
 require('mason-lspconfig').setup({
     ensure_installed = {'lua_ls', 'ts_ls', 'rust_analyzer'},
     handlers = handlers,
-})
-
--- Completion setup
-local cmp = require('cmp')
-local luasnip = require('luasnip')
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-f>'] = cmp.mapping(function()
-            if luasnip.jumpable(1) then
-                luasnip.jump(1)
-            end
-        end),
-        ['<C-b>'] = cmp.mapping(function()
-            if luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            end
-        end),
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp', keyword_length = 4 },
-        { name = 'luasnip' },
-        { name = 'path' },
-        { name = 'buffer', keyword_length = 5 },
-    })
 })
 
 -- Diagnostic configuration
