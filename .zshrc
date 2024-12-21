@@ -5,8 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-
 # start tmux session
 if command -v tmux &> /dev/null && [[ -z "$TMUX" ]]
 then
@@ -68,6 +66,9 @@ else
     echo "Unsupported OS, could not find Powerlevel10k or NVM."
 fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Personal Soruce
 source ~/scripts/zsh-z.plugin.zsh
@@ -103,6 +104,7 @@ alias ls="ls --color=auto"
 alias ll="ls -a"
 alias vim="nvim"
 alias g="git"
+alias py="python"
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan,bg=#ff00ff,bold" 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source ~/scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -145,3 +147,5 @@ esac
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Created by `pipx` on 2024-11-19 13:28:12
+export PATH="$PATH:/home/demi/.local/bin"

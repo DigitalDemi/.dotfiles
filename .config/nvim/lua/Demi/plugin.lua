@@ -12,10 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    { 'nvim-telescope/telescope.nvim' },
-    { 'nvim-lua/plenary.nvim' },
+
+    { 'nvim-telescope/telescope.nvim' }, -- Typical 
+    { 'nvim-lua/plenary.nvim' }, -- Alot of plugins use
     {
-        'nvim-treesitter/nvim-treesitter',
+        'nvim-treesitter/nvim-treesitter', -- Needed completed
         build = function()
             require('nvim-treesitter.install').update { sync = true }
         end,
@@ -31,26 +32,14 @@ local plugins = {
     },
 
     {
-        "lukas-reineke/headlines.nvim",
+        "lukas-reineke/headlines.nvim", -- for markdown highlighting
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = true, -- or `opts = {}`
     },
 
-    { "scottmckendry/cyberdream.nvim", priority = 1000 },
-    -- example lazy.nvim install setup
-    -- {
-    --     "slugbyte/lackluster.nvim",
-    --     lazy = false,
-    --     priority = 1000,
-    --     init = function()
-    --         vim.cmd.colorscheme("lackluster")
-    --         -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
-    --         -- vim.cmd.colorscheme("lackluster-mint")
-    --     end,
-    -- },
 
-    {'VonHeikemen/lsp-zero.nvim'},
-    
+    -- {'VonHeikemen/lsp-zero.nvim'}, -- not ndded anymore however good documentation will be moved later
+
     -- LSP Support
     { 'neovim/nvim-lspconfig' }, -- Required
     {
@@ -62,10 +51,16 @@ local plugins = {
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp' }, -- Required
-    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-    { 'hrsh7th/cmp-buffer' },
-    { 'saadparwaiz1/cmp_luasnip' },
+    -- { 'hrsh7th/nvim-cmp' }, -- Required
+    -- { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+    -- { 'hrsh7th/cmp-buffer' },
+    -- { 'saadparwaiz1/cmp_luasnip' },
+    --
+    {
+        'saghen/blink.cmp',
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = '*',
+    },
 
     -- Snippets
     {
@@ -73,9 +68,6 @@ local plugins = {
         version = "v2.3", -- Use the latest stable version
         build = "make install_jsregexp"
     },
-
-    -- Tagging and Autocompletion
-    { 'windwp/nvim-ts-autotag' },
 
     -- Statusline and UI
     {
@@ -92,16 +84,8 @@ local plugins = {
     -- Tmux Integration
     { 'christoomey/vim-tmux-navigator' },
 
-    -- Game for practice
-    { 'ThePrimeagen/vim-be-good' },
-
     -- Comments
-    {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    },
+    {'numToStr/Comment.nvim'},
 
     -- Obsidian integration for notes
     {
@@ -125,9 +109,6 @@ local plugins = {
         opts = {}
     },
 
-    -- Transparent background
-    { 'tribela/vim-transparent' },
-
     -- Discord Rich Presence
     { 'andweeb/presence.nvim' },
 
@@ -141,13 +122,51 @@ local plugins = {
     -- Debugging
     { 'mfussenegger/nvim-dap' },
 
-    -- Live server for web development
+    {"slugbyte/lackluster.nvim",
+    lazy = false,
+    priority = 1000,
+    init = function()
+        vim.cmd.colorscheme("lackluster")
+        -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
+        -- vim.cmd.colorscheme("lackluster-mint")
+    end,},
+
     {
-        'barrett-ruth/live-server.nvim',
-        build = 'pnpm add -g live-server',
-        cmd = { 'LiveServerStart', 'LiveServerStop' },
-        config = true,
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+          "MunifTanjim/nui.nvim",
+          -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        }
     },
+    { 'smithbm2316/centerpad.nvim' },
+
+    -- {
+    --   "folke/zen-mode.nvim",
+    --   opts = {
+    --     -- your configuration comes here
+    --     -- or leave it empty to use the default settings
+    --     -- refer to the configuration section below
+    --     gitsigns = { enabled = true }, -- disables git signs
+    --     tmux = { enabled = true }, -- disables the tmux statusline
+    --     todo = { enabled = true }, -- if set to "true", todo-comments.nvim highlights will be disabled
+    --     twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
+    --   }
+    -- },
+
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+         }
+    },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
 }
 
 local opts = {}
@@ -157,6 +176,10 @@ require("lazy").setup(plugins, opts)
 
 -- Mason setup
 require('mason').setup()
+
+require 'colorizer'.setup()
+
+require('Comment').setup()
 
 -- Set Treesitter compiler
 require 'nvim-treesitter.install'.compilers = { "clang" }

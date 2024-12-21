@@ -25,12 +25,16 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 12
 vim.opt.signcolumn = "yes"
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+
+
+vim.g.have_nerd_font = true
 
 
 
