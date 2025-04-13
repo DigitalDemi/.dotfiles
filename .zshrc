@@ -1,9 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+fastfetch
 
 # start tmux session
 if command -v tmux &> /dev/null && [[ -z "$TMUX" ]]
@@ -11,10 +6,21 @@ then
     tmux new-session -c $PWD
 fi
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude node_modules'
+# Better colors and preview window
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --height=80% --multi --preview='bat --color=always --style=numbers --line-range=:500 {}'"
+
+
 KEYTIMEOUT=1
 
 # neofetch
-fastfetch
 # gpg fix
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -66,14 +72,14 @@ else
     echo "Unsupported OS, could not find Powerlevel10k or NVM."
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 # Personal Soruce
 source ~/scripts/zsh-z.plugin.zsh
 source ~/scripts/gpg-agent.plugin.zsh
-source ~/scripts/jdk-switch/jdk-switch.plugin.zsh
+# source ~/scripts/jdk-switch/jdk-switch.plugin.zsh
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored _approximate
@@ -105,6 +111,9 @@ alias ll="ls -a"
 alias vim="nvim"
 alias g="git"
 alias py="python"
+alias pshell='eval $(poetry env activate)'
+
+
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan,bg=#ff00ff,bold" 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source ~/scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -137,6 +146,14 @@ export ANDROID_HOME="/home/demi/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 
+# Created by `pipx` on 2024-11-19 13:28:12
+export PATH="$PATH:/Users/$USER/.local/bin"
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="$HOME/.development/flutter/bin:$PATH"
+export PATH="$HOME/.gem/bin:$PATH"
+export PATH="$HOME/.gem/ruby/3.4.0/bin/:$PATH"
+
 # pnpm
 export PNPM_HOME="/home/demi/.local/share/pnpm"
 case ":$PATH:" in
@@ -147,5 +164,9 @@ esac
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# Created by `pipx` on 2024-11-19 13:28:12
-export PATH="$PATH:/home/demi/.local/bin"
+
+[ -f "/Users/demii/.ghcup/env" ] && . "/Users/demii/.ghcup/env" # ghcup-env
+
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+

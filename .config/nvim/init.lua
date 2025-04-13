@@ -1,2 +1,1 @@
-require("Demi")
-require("Demi.PluginConfig")
+require("demii")
