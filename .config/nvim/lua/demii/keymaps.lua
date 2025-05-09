@@ -1,33 +1,45 @@
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.g.mapleader = ' '                                
 
+vim.g.tmux_navigator_no_mappings = 1                
+local map = vim.keymap.set                         
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+local has_oil, oil = pcall(require, 'oil')
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+if has_oil then
+  map('n', '<leader>pv', function() oil.open() end,
+    { desc = "Oil Explorer" })
+else
+  map('n', '<leader>pv', vim.cmd.Ex,
+    { desc = "Explorer (vim.cmd.Ex)" })
+end
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+-- map('n', '<C-h>',    ':TmuxNavigateLeft<CR>',         { silent = true, desc = "Tmux ←" })
+-- map('n', '<C-j>',    ':TmuxNavigateDown<CR>',         { silent = true, desc = "Tmux ↓" })
+-- map('n', '<C-k>',    ':TmuxNavigateUp<CR>',           { silent = true, desc = "Tmux ↑" })
+-- map('n', '<C-l>',    ':TmuxNavigateRight<CR>',        { silent = true, desc = "Tmux →" })
+-- map('n', '<C-\\>',   ':TmuxNavigatePrevious<CR>',     { silent = true, desc = "Tmux prev pane" })
 
-vim.keymap.set("n", "Q", "<nop>")
+map('v', 'J', ":m '>+1<CR>gv=gv",                      { desc = "Move selection down" })
+map('v', 'K', ":m '<-2<CR>gv=gv",                      { desc = "Move selection up"   })
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+map('n', '<C-d>', '<C-d>zz',                           { desc = "Scroll down + center" })
+map('n', '<C-u>', '<C-u>zz',                           { desc = "Scroll up + center"   })
 
+map({'n','v'}, '<leader>y', '"+y',                      { desc = "Yank → system clipboard" })
+map('n',         '<leader>Y', '"+Y',                    { desc = "Yank line → system clipboard" })
 
--- Set the variable to disable mappings
-vim.g.tmux_navigator_no_mappings = 1
+map({'n','v','o'}, '<leader>d', '"_d',                 { desc = "Delete → void register" })
+map({'n','v','o'}, '<leader>c', '"_c',                 { desc = "Change → void register" })
+map('n',         '<leader>x', '"_x',                   { desc = "Delete char → void register" })
 
--- Example mappings:
-vim.api.nvim_set_keymap('n', '{Left-Mapping}', ':<C-U>TmuxNavigateLeft<cr>', {silent = true})
-vim.api.nvim_set_keymap('n', '{Down-Mapping}', ':<C-U>TmuxNavigateDown<cr>', {silent = true})
-vim.api.nvim_set_keymap('n', '{Up-Mapping}', ':<C-U>TmuxNavigateUp<cr>', {silent = true})
-vim.api.nvim_set_keymap('n', '{Right-Mapping}', ':<C-U>TmuxNavigateRight<cr>', {silent = true})
-vim.api.nvim_set_keymap('n', '{Previous-Mapping}', ':<C-U>TmuxNavigatePrevious<cr>', {silent = true})
+map('n', 'Q', '<nop>',                                  { desc = "Disable Q" })
 
+-- map('n', '<C-n>', '<cmd>cnext<CR>zz',                   { desc = "Quickfix Next + center" })
+-- map('n', '<C-p>', '<cmd>cprev<CR>zz',                   { desc = "Quickfix Prev + center" })
+map('n', '<leader>n','<cmd>lnext<CR>zz',                { desc = "Loclist Next + center" })
+map('n', '<leader>p','<cmd>lprev<CR>zz',                { desc = "Loclist Prev + center" })
+--
+-- map('i', '<C-BS>',  '<C-o>"_db',                       { desc = "⌫ Delete prev word (void)" })
+-- map('i', '<M-d>',   '<C-o>"_dw',                       { desc = "Delete to end of word (void)" })
+-- map('i', '<M-BS>',  '<C-o>"_db',                       { desc = "Delete to start of word (void)" })
 

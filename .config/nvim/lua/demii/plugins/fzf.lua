@@ -1,20 +1,41 @@
 return {
   "ibhagwan/fzf-lua",  -- FZF integration for Neovim using Lua
-  -- Optional dependency for icon support
-  dependencies = { "echasnovski/mini.icons"},
-  -- If using a different icons library, you could also use:
-  -- dependencies = { "echasnovski/mini.icons" },
-
-  -- Key mappings configuration
+  dependencies = { "echasnovski/mini.icons" },
   keys = {
     {
-      "<C-p>",  -- Press Control-p to trigger file search
-      function() require('fzf-lua').files() end,  -- Calls fzf-lua file picker
-      desc = "Finding files using fuzz finder",  -- Description of the key mapping
+      "<C-p>",
+      function() require('fzf-lua').files({
+        prompt    = 'Files❯ ',
+        no_ignore = false,       -- respect .gitignore
+        fd_opts   = "--type f"
+      }) end,
+      desc = "Find files (respect .gitignore)",
+    },
+    {
+      "<leader>fg",
+      function() require('fzf-lua').live_grep({
+        rg_opts  = "--column --line-number --no-heading --color=always --smart-case",
+        prompt   = 'Rg❯ '
+      }) end,
+      desc = "Live grep (fzf-lua)",
+    },
+    {
+      "<leader>ffg",
+      function() require('fzf-lua').git_files({
+        prompt = 'GitFiles❯ '
+      }) end,
+      desc = "Git tracked files only",
     },
   },
-
-  -- Additional plugin options can go here
-  opts = {},
+  opts = {
+    winopts = {
+      height = 0.85,
+      width  = 0.80,
+    },
+    fzf_opts = {
+      ['--ansi'] = '',
+      ['--prompt'] = '→ ',
+    },
+  },
 }
 

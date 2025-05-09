@@ -36,4 +36,18 @@ vim.opt.cursorcolumn = true
 
 vim.g.have_nerd_font = true
 
+local yank_grp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = yank_grp,
+  callback = function()
+    vim.highlight.on_yank {
+      higroup  = "IncSearch",    
+      timeout  = 200,           
+      on_visual = false,       
+    }
+  end,
+})
+
+
 
